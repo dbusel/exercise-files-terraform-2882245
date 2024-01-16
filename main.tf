@@ -22,11 +22,11 @@ data "aws_vpc" "default" {
   default = true
 }
 
-resource "aws_instance" "web" {
+resource "aws_instance" "blog" {
   ami           = data.aws_ami.app_ami.id
   instance_type = "t3.micro"
 
-  vpc_security_group_ids = ["aws_security_group.blog.id"]
+  vpc_security_group_ids = [aws_security_group.blog.id]
 
   tags = {
     Name = "Hello World"
